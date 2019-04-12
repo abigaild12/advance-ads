@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Ads from './components/Ads';
+import './styles/index.css';
 import './App.css';
+import './Ads.js';
 
 class App extends Component {
+  componentDidMount () {
+      const script = document.createElement("script");
+
+      script.src = "https://tags.crwdcntrl.net/c/931/cc.js?ns=_cc931";
+      script.type = "text/javascript";
+      script.id="LOTCC_931"
+      script.async = true;
+      this.instance.appendChild(script);
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <header className="App-header">  
+        <div ref={el => (this.instance = el)} />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Click on my Ads.
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
+        <main className="main">
+        <Ads />
+        </main> 
       </div>
     );
   }
